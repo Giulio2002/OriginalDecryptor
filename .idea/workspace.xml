@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d90d7d1-36ad-478e-9f80-d4ed750efc57" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kiss_draw.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kiss_general.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kiss_posix.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kiss_widgets.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,8 +33,8 @@
       <file leaf-file-name="LICENSE" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LICENSE">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="460" selection-start-line="4" selection-start-column="460" selection-end-line="4" selection-end-column="460" />
+            <state relative-caret-position="120">
+              <caret line="8" column="460" selection-start-line="8" selection-start-column="460" selection-end-line="8" selection-end-column="460" />
             </state>
           </provider>
         </entry>
@@ -176,12 +171,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531942672698</updated>
-      <workItem from="1531942675111" duration="2306000" />
+      <workItem from="1531942675111" duration="2459000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2306000" />
+    <option name="totallyTimeSpent" value="2459000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -262,8 +257,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="460" selection-start-line="4" selection-start-column="460" selection-end-line="4" selection-end-column="460" />
+        <state relative-caret-position="120">
+          <caret line="8" column="460" selection-start-line="8" selection-start-column="460" selection-end-line="8" selection-end-column="460" />
         </state>
       </provider>
     </entry>
