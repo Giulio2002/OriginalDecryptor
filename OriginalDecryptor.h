@@ -1,5 +1,5 @@
 /*
-  kiss_sdl widget toolkit
+  original_sdl widget toolkit
   Copyright (c) 2016 Tarvo Korrovits <tkorrovi@mail.com>
   This software is provided 'as-is', without any express or implied
   warranty. In no event will the authors be held liable for any damages
@@ -16,11 +16,11 @@
   3. This notice may not be removed or altered from any source
      distribution.
 
-  kiss_sdl version 1.2.0
+  original_sdl version 1.2.0
 */
 
-#ifndef _kiss_sdl_h
-#define _kiss_sdl_h
+#ifndef _original_sdl_h
+#define _original_sdl_h
 
 #ifndef RESDIR
 #define RESDIR ""
@@ -51,54 +51,54 @@
 #include <string.h>
 #include <stdio.h>
 
-#define KISS_MAX_LENGTH 200
-#define KISS_MIN_LENGTH 10
-#define KISS_MAX_LABEL 500
-#define KISS_MAGIC 12345
+#define original_MAX_LENGTH 200
+#define original_MIN_LENGTH 10
+#define original_MAX_LABEL 500
+#define original_MAGIC 12345
 
 enum {OTHER_TYPE, WINDOW_TYPE, RENDERER_TYPE, TEXTURE_TYPE, SURFACE_TYPE,
 	FONT_TYPE, STRING_TYPE, ARRAY_TYPE};
 
 #ifdef _MSC_VER
 #ifdef _WIN32
-typedef struct _stat32 kiss_stat;
+typedef struct _stat32 original_stat;
 #else
-typedef struct _stat64 kiss_stat;
+typedef struct _stat64 original_stat;
 #endif
 
-typedef struct kiss_dirent {
+typedef struct original_dirent {
 	char *d_name;
-} kiss_dirent;
+} original_dirent;
 
-typedef struct kiss_dir {
+typedef struct original_dir {
 	ptrdiff_t fhandle;
 	struct _finddata_t fdata;
-	kiss_dirent ent;
-	char name[KISS_MAX_LENGTH];
-} kiss_dir;
+	original_dirent ent;
+	char name[original_MAX_LENGTH];
+} original_dir;
 #else
-typedef struct stat kiss_stat;
-typedef struct dirent kiss_dirent;
-typedef DIR kiss_dir;
+typedef struct stat original_stat;
+typedef struct dirent original_dirent;
+typedef DIR original_dir;
 #endif
 
 /* Length is number of elements, size is allocated size */
-typedef struct kiss_array {
+typedef struct original_array {
 	void **data;
 	int *id;
 	int length;
 	int size;
 	int ref;
-} kiss_array;
+} original_array;
 
-typedef struct kiss_image {
+typedef struct original_image {
 	SDL_Texture *image;
 	int magic;
 	int w;
 	int h;
-} kiss_image;
+} original_image;
 
-typedef struct kiss_font {
+typedef struct original_font {
 	TTF_Font *font;
 	int magic;
 	int fontheight;
@@ -106,54 +106,54 @@ typedef struct kiss_font {
 	int lineheight;
 	int advance;
 	int ascent;
-} kiss_font;
+} original_font;
 
-typedef struct kiss_window {
+typedef struct original_window {
 	int visible;
 	int focus;
 	SDL_Rect rect;
 	int decorate;
 	SDL_Color bg;
-	struct kiss_window *wdw;
-} kiss_window;
+	struct original_window *wdw;
+} original_window;
 
-typedef struct kiss_label {
+typedef struct original_label {
 	int visible;
 	SDL_Rect rect;
-	char text[KISS_MAX_LABEL];
+	char text[original_MAX_LABEL];
 	SDL_Color textcolor;
-	kiss_font font;
-	kiss_window *wdw;
-} kiss_label;
+	original_font font;
+	original_window *wdw;
+} original_label;
 
-typedef struct kiss_button {
+typedef struct original_button {
 	int visible;
 	int focus;
 	SDL_Rect rect;
 	int textx;
 	int texty;
-	char text[KISS_MAX_LENGTH];
+	char text[original_MAX_LENGTH];
 	int active;
 	int prelight;
 	SDL_Color textcolor;
-	kiss_font font;
-	kiss_image normalimg;
-	kiss_image activeimg;
-	kiss_image prelightimg;
-	kiss_window *wdw;
-} kiss_button;
+	original_font font;
+	original_image normalimg;
+	original_image activeimg;
+	original_image prelightimg;
+	original_window *wdw;
+} original_button;
 
-typedef struct kiss_selectbutton {
+typedef struct original_selectbutton {
 	int visible;
 	int focus;
 	SDL_Rect rect;
 	int selected;
-	kiss_image selectedimg;
-	kiss_image unselectedimg;
-	kiss_window *wdw;
-} kiss_selectbutton;
+	original_image selectedimg;
+	original_image unselectedimg;
+	original_window *wdw;
+} original_selectbutton;
 
-typedef struct kiss_vscrollbar {
+typedef struct original_vscrollbar {
 	int visible;
 	int focus;
 	SDL_Rect uprect;
@@ -166,13 +166,13 @@ typedef struct kiss_vscrollbar {
 	int downclicked;
 	int upclicked;
 	int sliderclicked;
-	kiss_image up;
-	kiss_image down;
-	kiss_image vslider;
-	kiss_window *wdw;
-} kiss_vscrollbar;
+	original_image up;
+	original_image down;
+	original_image vslider;
+	original_window *wdw;
+} original_vscrollbar;
 
-typedef struct kiss_hscrollbar {
+typedef struct original_hscrollbar {
 	int visible;
 	int focus;
 	SDL_Rect leftrect;
@@ -185,13 +185,13 @@ typedef struct kiss_hscrollbar {
 	int leftclicked;
 	int rightclicked;
 	int sliderclicked;
-	kiss_image left;
-	kiss_image right;
-	kiss_image hslider;
-	kiss_window *wdw;
-} kiss_hscrollbar;
+	original_image left;
+	original_image right;
+	original_image hslider;
+	original_window *wdw;
+} original_hscrollbar;
 
-typedef struct kiss_progressbar {
+typedef struct original_progressbar {
 	int visible;
 	SDL_Rect rect;
 	SDL_Rect barrect;
@@ -201,18 +201,18 @@ typedef struct kiss_progressbar {
 	SDL_Color bg;
 	unsigned int lasttick;
 	int run;
-	kiss_image bar;
-	kiss_window *wdw;
-} kiss_progressbar;
+	original_image bar;
+	original_window *wdw;
+} original_progressbar;
 
-typedef struct kiss_entry {
+typedef struct original_entry {
 	int visible;
 	int focus;
 	SDL_Rect rect;
 	int decorate;
 	int textx;
 	int texty;
-	char text[KISS_MAX_LENGTH];
+	char text[original_MAX_LENGTH];
 	int active;
 	int textwidth;
 	int selection[4];
@@ -220,16 +220,16 @@ typedef struct kiss_entry {
 	SDL_Color normalcolor;
 	SDL_Color activecolor;
 	SDL_Color bg;
-	kiss_font font;
-	kiss_window *wdw;
-} kiss_entry;
+	original_font font;
+	original_window *wdw;
+} original_entry;
 
-typedef struct kiss_textbox {
+typedef struct original_textbox {
 	int visible;
 	int focus;
 	SDL_Rect rect;
 	int decorate;
-	kiss_array *array;
+	original_array *array;
 	SDL_Rect textrect;
 	int firstline;
 	int maxlines;
@@ -241,130 +241,130 @@ typedef struct kiss_textbox {
 	SDL_Color textcolor;
 	SDL_Color hlcolor;
 	SDL_Color bg;
-	kiss_font font;
-	kiss_window *wdw;
-} kiss_textbox;
+	original_font font;
+	original_window *wdw;
+} original_textbox;
 
-typedef struct kiss_combobox {
+typedef struct original_combobox {
 	int visible;
-	char text[KISS_MAX_LENGTH];
-	kiss_entry entry;
-	kiss_window window;
-	kiss_vscrollbar vscrollbar;
-	kiss_textbox textbox;
-	kiss_image combo;
-	kiss_window *wdw;
-} kiss_combobox;
+	char text[original_MAX_LENGTH];
+	original_entry entry;
+	original_window window;
+	original_vscrollbar vscrollbar;
+	original_textbox textbox;
+	original_image combo;
+	original_window *wdw;
+} original_combobox;
 
-extern SDL_Color kiss_white, kiss_black, kiss_green, kiss_blue,
-		kiss_lightblue;
-extern kiss_font kiss_textfont, kiss_buttonfont;
-extern kiss_image kiss_normal, kiss_prelight, kiss_active, kiss_bar,
-	kiss_up, kiss_down, kiss_left, kiss_right, kiss_vslider,
-	kiss_hslider, kiss_selected, kiss_unselected, kiss_combo;
-extern double kiss_spacing;
-extern int kiss_textfont_size, kiss_buttonfont_size;
-extern int kiss_click_interval, kiss_progress_interval;
-extern int kiss_slider_padding;
-extern int kiss_border, kiss_edge;
-extern int kiss_screen_width, kiss_screen_height;
+extern SDL_Color original_white, original_black, original_green, original_blue,
+		original_lightblue;
+extern original_font original_textfont, original_buttonfont;
+extern original_image original_normal, original_prelight, original_active, original_bar,
+	original_up, original_down, original_left, original_right, original_vslider,
+	original_hslider, original_selected, original_unselected, original_combo;
+extern double original_spacing;
+extern int original_textfont_size, original_buttonfont_size;
+extern int original_click_interval, original_progress_interval;
+extern int original_slider_padding;
+extern int original_border, original_edge;
+extern int original_screen_width, original_screen_height;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-char *kiss_getcwd(char *buf, int size);
-int kiss_chdir(char *path);
-int kiss_getstat(char *pathname, kiss_stat *buf);
-kiss_dir *kiss_opendir(char *name);
-kiss_dirent *kiss_readdir(kiss_dir *dirp);
-int kiss_closedir(kiss_dir *dirp);
-int kiss_isdir(kiss_stat s);
-int kiss_isreg(kiss_stat s);
-int kiss_makerect(SDL_Rect *rect, int x, int y, int h, int w);
-int kiss_pointinrect(int x, int y, SDL_Rect *rect);
-int kiss_utf8next(char *str, int index);
-int kiss_utf8prev(char *str, int index);
-int kiss_utf8fix(char *str);
-char *kiss_string_copy(char *dest, size_t size, char *str1, char *str2);
-int kiss_string_compare(const void *a, const void *b);
-char *kiss_backspace(char *str);
-int kiss_array_new(kiss_array *a);
-void *kiss_array_data(kiss_array *a, int index);
-int kiss_array_id(kiss_array *a, int index);
-int kiss_array_assign(kiss_array *a, int index, int id, void *data);
-int kiss_array_append(kiss_array *a, int id, void *data);
-int kiss_array_appendstring(kiss_array *a, int id, char *text1, char *text2);
-int kiss_array_insert(kiss_array *a, int index, int id, void *data);
-int kiss_array_remove(kiss_array *a, int index);
-int kiss_array_free(kiss_array *a);
-unsigned int kiss_getticks(void);
-int kiss_maxlength(kiss_font font, int width, char *str1, char *str2);
-int kiss_textwidth(kiss_font font, char *str1, char *str2);
-int kiss_renderimage(SDL_Renderer *renderer, kiss_image image,
+char *original_getcwd(char *buf, int size);
+int original_chdir(char *path);
+int original_getstat(char *pathname, original_stat *buf);
+original_dir *original_opendir(char *name);
+original_dirent *original_readdir(original_dir *dirp);
+int original_closedir(original_dir *dirp);
+int original_isdir(original_stat s);
+int original_isreg(original_stat s);
+int original_makerect(SDL_Rect *rect, int x, int y, int h, int w);
+int original_pointinrect(int x, int y, SDL_Rect *rect);
+int original_utf8next(char *str, int index);
+int original_utf8prev(char *str, int index);
+int original_utf8fix(char *str);
+char *original_string_copy(char *dest, size_t size, char *str1, char *str2);
+int original_string_compare(const void *a, const void *b);
+char *original_backspace(char *str);
+int original_array_new(original_array *a);
+void *original_array_data(original_array *a, int index);
+int original_array_id(original_array *a, int index);
+int original_array_assign(original_array *a, int index, int id, void *data);
+int original_array_append(original_array *a, int id, void *data);
+int original_array_appendstring(original_array *a, int id, char *text1, char *text2);
+int original_array_insert(original_array *a, int index, int id, void *data);
+int original_array_remove(original_array *a, int index);
+int original_array_free(original_array *a);
+unsigned int original_getticks(void);
+int original_maxlength(original_font font, int width, char *str1, char *str2);
+int original_textwidth(original_font font, char *str1, char *str2);
+int original_renderimage(SDL_Renderer *renderer, original_image image,
 	int x, int y, SDL_Rect *clip);
-int kiss_rendertext(SDL_Renderer *renderer, char *text, int x, int y,
-	kiss_font font, SDL_Color color);
-int kiss_fillrect(SDL_Renderer *renderer, SDL_Rect *rect, SDL_Color color);
-int kiss_decorate(SDL_Renderer *renderer, SDL_Rect *rect, SDL_Color color,
+int original_rendertext(SDL_Renderer *renderer, char *text, int x, int y,
+	original_font font, SDL_Color color);
+int original_fillrect(SDL_Renderer *renderer, SDL_Rect *rect, SDL_Color color);
+int original_decorate(SDL_Renderer *renderer, SDL_Rect *rect, SDL_Color color,
 	int edge);
-int kiss_image_new(kiss_image *image, char *fname, kiss_array *a,
+int original_image_new(original_image *image, char *fname, original_array *a,
 	SDL_Renderer* renderer);
-int kiss_font_new(kiss_font *font, char *fname, kiss_array *a, int size);
-SDL_Renderer* kiss_init(char* title, kiss_array *a, int w, int h);
-int kiss_clean(kiss_array *a);
-int kiss_window_new(kiss_window *window, kiss_window *wdw, int decorate,
+int original_font_new(original_font *font, char *fname, original_array *a, int size);
+SDL_Renderer* original_init(char* title, original_array *a, int w, int h);
+int original_clean(original_array *a);
+int original_window_new(original_window *window, original_window *wdw, int decorate,
 	int x, int y, int w, int h);
-int kiss_window_event(kiss_window *window, SDL_Event *event, int *draw);
-int kiss_window_draw(kiss_window *window, SDL_Renderer *renderer);
-int kiss_label_new(kiss_label *label, kiss_window *wdw, char *text,
+int original_window_event(original_window *window, SDL_Event *event, int *draw);
+int original_window_draw(original_window *window, SDL_Renderer *renderer);
+int original_label_new(original_label *label, original_window *wdw, char *text,
 	int x, int y);
-int kiss_label_draw(kiss_label *label, SDL_Renderer *renderer);
-int kiss_button_new(kiss_button *button, kiss_window *wdw, char *text,
+int original_label_draw(original_label *label, SDL_Renderer *renderer);
+int original_button_new(original_button *button, original_window *wdw, char *text,
 	int x, int y);
-int kiss_button_event(kiss_button *button, SDL_Event *event, int *draw);
-int kiss_button_draw(kiss_button *button, SDL_Renderer *renderer);
-int kiss_selectbutton_new(kiss_selectbutton *selectbutton, kiss_window *wdw,
+int original_button_event(original_button *button, SDL_Event *event, int *draw);
+int original_button_draw(original_button *button, SDL_Renderer *renderer);
+int original_selectbutton_new(original_selectbutton *selectbutton, original_window *wdw,
 	int x, int y);
-int kiss_selectbutton_event(kiss_selectbutton *selectbutton,
+int original_selectbutton_event(original_selectbutton *selectbutton,
 	SDL_Event *event, int *draw);
-int kiss_selectbutton_draw(kiss_selectbutton *selectbutton,
+int original_selectbutton_draw(original_selectbutton *selectbutton,
 	SDL_Renderer *renderer);
-int kiss_vscrollbar_new(kiss_vscrollbar *vscrollbar, kiss_window *wdw,
+int original_vscrollbar_new(original_vscrollbar *vscrollbar, original_window *wdw,
 	int x, int y, int h);
-int kiss_vscrollbar_event(kiss_vscrollbar *vscrollbar, SDL_Event *event,
+int original_vscrollbar_event(original_vscrollbar *vscrollbar, SDL_Event *event,
 	int *draw);
-int kiss_vscrollbar_draw(kiss_vscrollbar *vscrollbar,
+int original_vscrollbar_draw(original_vscrollbar *vscrollbar,
 	SDL_Renderer *renderer);
-int kiss_hscrollbar_new(kiss_hscrollbar *hscrollbar, kiss_window *wdw,
+int original_hscrollbar_new(original_hscrollbar *hscrollbar, original_window *wdw,
 	int x, int y, int w);
-int kiss_hscrollbar_event(kiss_hscrollbar *hscrollbar, SDL_Event *event,
+int original_hscrollbar_event(original_hscrollbar *hscrollbar, SDL_Event *event,
 	int *draw);
-int kiss_hscrollbar_draw(kiss_hscrollbar *hscrollbar,
+int original_hscrollbar_draw(original_hscrollbar *hscrollbar,
 	SDL_Renderer *renderer);
-int kiss_progressbar_new(kiss_progressbar *progressbar, kiss_window *wdw,
+int original_progressbar_new(original_progressbar *progressbar, original_window *wdw,
 	int x, int y, int w);
-int kiss_progressbar_event(kiss_progressbar *progressbar, SDL_Event *event,
+int original_progressbar_event(original_progressbar *progressbar, SDL_Event *event,
 	int *draw);
-int kiss_progressbar_draw(kiss_progressbar *progressbar,
+int original_progressbar_draw(original_progressbar *progressbar,
 	SDL_Renderer *renderer);
-int kiss_entry_new(kiss_entry *entry, kiss_window *wdw, int decorate,
+int original_entry_new(original_entry *entry, original_window *wdw, int decorate,
 	char *text, int x, int y, int w);
-int kiss_entry_event(kiss_entry *entry, SDL_Event *event, int *draw);
-int kiss_entry_draw(kiss_entry *entry, SDL_Renderer *renderer);
-int kiss_textbox_new(kiss_textbox *textbox, kiss_window *wdw, int decorate,
-	kiss_array *a, int x, int y, int w, int h);
-int kiss_textbox_event(kiss_textbox *textbox, SDL_Event *event, int *draw);
-int kiss_textbox_draw(kiss_textbox *textbox, SDL_Renderer *renderer);
-int kiss_combobox_new(kiss_combobox *combobox, kiss_window *wdw,
-	char *text, kiss_array *a, int x, int y, int w, int h);
-int kiss_combobox_event(kiss_combobox *combobox, SDL_Event *event,
+int original_entry_event(original_entry *entry, SDL_Event *event, int *draw);
+int original_entry_draw(original_entry *entry, SDL_Renderer *renderer);
+int original_textbox_new(original_textbox *textbox, original_window *wdw, int decorate,
+	original_array *a, int x, int y, int w, int h);
+int original_textbox_event(original_textbox *textbox, SDL_Event *event, int *draw);
+int original_textbox_draw(original_textbox *textbox, SDL_Renderer *renderer);
+int original_combobox_new(original_combobox *combobox, original_window *wdw,
+	char *text, original_array *a, int x, int y, int w, int h);
+int original_combobox_event(original_combobox *combobox, SDL_Event *event,
 	int *draw);
-int kiss_combobox_draw(kiss_combobox *combobox, SDL_Renderer *renderer);
+int original_combobox_draw(original_combobox *combobox, SDL_Renderer *renderer);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _kiss_sdl_h */
+#endif /* _original_sdl_h */
 

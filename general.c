@@ -1,6 +1,6 @@
 #include "OriginalDecryptor.h"
 
-int kiss_makerect(SDL_Rect *rect, int x, int y, int w, int h)
+int original_makerect(SDL_Rect *rect, int x, int y, int w, int h)
 {
 	if (!rect) return -1;
 	rect->x = x;
@@ -10,13 +10,13 @@ int kiss_makerect(SDL_Rect *rect, int x, int y, int w, int h)
 	return 0;
 }
 
-int kiss_pointinrect(int x, int y, SDL_Rect *rect)
+int original_pointinrect(int x, int y, SDL_Rect *rect)
 {
 	return x >= rect->x && x < rect->x + rect->w &&
 		y >= rect->y && y < rect->y + rect->h;
 }
 
-int kiss_utf8next(char *str, int index)
+int original_utf8next(char *str, int index)
 {
 	int i;
 
@@ -31,7 +31,7 @@ int kiss_utf8next(char *str, int index)
 	return i;
 }
 
-int kiss_utf8prev(char *str, int index)
+int original_utf8prev(char *str, int index)
 {
 	int i;
 
@@ -46,7 +46,7 @@ int kiss_utf8prev(char *str, int index)
 	return i;
 }
 
-int kiss_utf8fix(char *str)
+int original_utf8fix(char *str)
 {
 	int len, i;
 
@@ -60,7 +60,7 @@ int kiss_utf8fix(char *str)
 	return 0;
 }
 
-char *kiss_string_copy(char *dest, size_t size, char *str1, char *str2)
+char *original_string_copy(char *dest, size_t size, char *str1, char *str2)
 {
 	unsigned int len;
 	char *p;
@@ -75,50 +75,50 @@ char *kiss_string_copy(char *dest, size_t size, char *str1, char *str2)
 	p = dest;
 	strncpy(p + len, str2, size - len);
 	dest[size - 1] = 0;
-	kiss_utf8fix(dest);
+	original_utf8fix(dest);
 	return dest;
 }
 
-int kiss_string_compare(const void *a, const void *b)
+int original_string_compare(const void *a, const void *b)
 {
 	return strcmp(*((char **) a), *((char **) b));
 }
 
-char *kiss_backspace(char *str)
+char *original_backspace(char *str)
 {
 	int len;
 
 	if (!str) return NULL;
 	if (!(len = strlen(str))) return NULL;
 	str[len - 1] = 0;
-	kiss_utf8fix(str);
+	original_utf8fix(str);
 	return str; 
 }
 
-int kiss_array_new(kiss_array *a)
+int original_array_new(original_array *a)
 {
 	if (!a) return -1;
-	a->size = KISS_MIN_LENGTH;
+	a->size = original_MIN_LENGTH;
 	a->length = 0;
 	a->ref = 1;
-	a->data = (void **) malloc(KISS_MIN_LENGTH * sizeof(void *));
-	a->id = (int *) malloc(KISS_MIN_LENGTH * sizeof(int));
+	a->data = (void **) malloc(original_MIN_LENGTH * sizeof(void *));
+	a->id = (int *) malloc(original_MIN_LENGTH * sizeof(int));
 	return 0;
 }
 
-void *kiss_array_data(kiss_array *a, int index)
+void *original_array_data(original_array *a, int index)
 {
 	if (index < 0 || index >= a->size || !a) return NULL;
 	return a->data[index];
 }
 
-int kiss_array_id(kiss_array *a, int index)
+int original_array_id(original_array *a, int index)
 {
 	if (!a || index < 0 || index >= a->size) return 0;
 	return a->id[index];
 }
 
-int kiss_array_assign(kiss_array *a, int index, int id, void *data)
+int original_array_assign(original_array *a, int index, int id, void *data)
 {
 	if (!a || index < 0 || index >= a->length) return -1;
 	free(a->data[index]);
@@ -127,7 +127,7 @@ int kiss_array_assign(kiss_array *a, int index, int id, void *data)
 	return 0;
 }
 
-int kiss_array_append(kiss_array *a, int id, void *data)
+int original_array_append(original_array *a, int id, void *data)
 {
 	int i;
 
@@ -148,18 +148,18 @@ int kiss_array_append(kiss_array *a, int id, void *data)
 	return 0;
 }
 
-int kiss_array_appendstring(kiss_array *a, int id, char *text1, char *text2)
+int original_array_appendstring(original_array *a, int id, char *text1, char *text2)
 {
 	char *p;
 
 	if (!a) return -1;
-	p = (char *) malloc(KISS_MAX_LENGTH);
-	kiss_string_copy(p, KISS_MAX_LENGTH, text1, text2);
-	kiss_array_append(a, id, p);
+	p = (char *) malloc(original_MAX_LENGTH);
+	original_string_copy(p, original_MAX_LENGTH, text1, text2);
+	original_array_append(a, id, p);
 	return 0;
 }
 
-int kiss_array_insert(kiss_array *a, int index, int id, void *data)
+int original_array_insert(original_array *a, int index, int id, void *data)
 {
 	int i;
 
@@ -184,7 +184,7 @@ int kiss_array_insert(kiss_array *a, int index, int id, void *data)
 	return 0;
 }
 
-int kiss_array_remove(kiss_array *a, int index)
+int original_array_remove(original_array *a, int index)
 {
 	int i;
 
@@ -200,7 +200,7 @@ int kiss_array_remove(kiss_array *a, int index)
 	return 0;
 }
 
-int kiss_array_free(kiss_array *a)
+int original_array_free(original_array *a)
 {
 	int i;
 

@@ -1,6 +1,6 @@
 #include "OriginalDecryptor.h"
 
-char *kiss_getcwd(char *buf, int size)
+char *original_getcwd(char *buf, int size)
 {
 #ifdef _MSC_VER
 	return _getcwd(buf, size);
@@ -9,7 +9,7 @@ char *kiss_getcwd(char *buf, int size)
 #endif
 }
 
-int kiss_chdir(char *path)
+int original_chdir(char *path)
 {
 #ifdef _MSC_VER
 	return _chdir(path);
@@ -18,7 +18,7 @@ int kiss_chdir(char *path)
 #endif
 }
 
-int kiss_getstat(char *pathname, kiss_stat *buf)
+int original_getstat(char *pathname, original_stat *buf)
 {
 #ifdef _MSC_VER
 #ifdef _WIN32
@@ -33,13 +33,13 @@ int kiss_getstat(char *pathname, kiss_stat *buf)
 }
 
 /* Search pattern must end with * in Visual C */
-kiss_dir *kiss_opendir(char *name)
+original_dir *original_opendir(char *name)
 {
 #ifdef _MSC_VER
-	kiss_dir *dir;
+	original_dir *dir;
 
-	if (!name || strlen(name) > KISS_MAX_LENGTH - 2) return NULL;
-	dir = malloc(sizeof(kiss_dir));
+	if (!name || strlen(name) > original_MAX_LENGTH - 2) return NULL;
+	dir = malloc(sizeof(original_dir));
 	dir->ent.d_name = NULL;
 	strcpy(dir->name, name);
 	dir->fhandle = (ptrdiff_t) _findfirst(dir->name, &dir->fdata);
@@ -53,7 +53,7 @@ kiss_dir *kiss_opendir(char *name)
 #endif
 }
 
-kiss_dirent *kiss_readdir(kiss_dir *dirp)
+original_dirent *original_readdir(original_dir *dirp)
 {
 #ifdef _MSC_VER
 	if(dirp->ent.d_name &&
@@ -66,7 +66,7 @@ kiss_dirent *kiss_readdir(kiss_dir *dirp)
 #endif
 }
 
-int kiss_closedir(kiss_dir *dirp)
+int original_closedir(original_dir *dirp)
 {
 #ifdef _MSC_VER
 	int n;
@@ -80,7 +80,7 @@ int kiss_closedir(kiss_dir *dirp)
 #endif
 }
 
-int kiss_isdir(kiss_stat s)
+int original_isdir(original_stat s)
 {
 #ifdef _MSC_VER
 	return s.st_mode & _S_IFDIR;
@@ -89,7 +89,7 @@ int kiss_isdir(kiss_stat s)
 #endif
 }
 
-int kiss_isreg(kiss_stat s)
+int original_isreg(original_stat s)
 {
 #ifdef _MSC_VER
 	return s.st_mode & _S_IFREG;
