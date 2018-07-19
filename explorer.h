@@ -1,6 +1,6 @@
 #include "OriginalDecryptor.h"
 
-extern char * path;
+extern char path[500];
 
 void text_reset(original_textbox *textbox, original_vscrollbar *vscrollbar);
 void dirent_read(original_textbox *textbox1, original_vscrollbar *vscrollbar1,

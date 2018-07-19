@@ -1,6 +1,6 @@
 #include "explorer.h"
 
-char * path;
+char path[500];
 
 void text_reset(original_textbox *textbox, original_vscrollbar *vscrollbar)
 {
@@ -103,6 +103,20 @@ void vscrollbar2_event(original_vscrollbar *vscrollbar, SDL_Event *e,
         *draw = 1;
     }
 }
+
+void textbox2_event(original_textbox *textbox, SDL_Event *e,
+                    original_vscrollbar *vscrollbar2, int *draw,original_label * label_res)
+{
+    int index = textbox->firstline + textbox->selectedline;
+    if (original_textbox_event(textbox, e, draw)) {
+        getcwd(path, sizeof(path));
+        if((const char *)original_array_data(textbox->array, index) == NULL) return;
+        strcat(path, "/");
+        strcat(path, (const char *)original_array_data(textbox->array, index));
+    }
+}
+
+
 int button_ok1_event(original_button *button, SDL_Event *e ,int *draw, original_label res)
 {
     if (original_button_event(button, e, draw)) {
@@ -120,7 +134,6 @@ void button_cancel_event(original_button *button, SDL_Event *e,
 }
 
 int explorer() {
-    path = (char *)malloc(sizeof(char) * 500);
     SDL_Renderer *renderer;
     SDL_Event e;
     original_array objects, a1, a2;
@@ -181,6 +194,8 @@ int explorer() {
                            &textbox2, &vscrollbar2, &label_sel, &draw);
             vscrollbar1_event(&vscrollbar1, &e, &textbox1,
                               &draw);
+            textbox2_event(&textbox2, &e, &vscrollbar2,
+                           &draw,&label_res);
             vscrollbar2_event(&vscrollbar2, &e, &textbox2, &draw);
             if(button_ok1_event(&button_ok1, &e, &draw, label_res)){
                 original_clean(&objects);
