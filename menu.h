@@ -1,4 +1,5 @@
-#ifndef ORIGINALDECRYPTOR_MENU_H
-#define ORIGINALDECRYPTOR_MENU_H
+#include "OriginalDecryptor.h"
 
-#endif //ORIGINALDECRYPTOR_MENU_H
+int button_file_event(original_button *button_file, SDL_Event *e, int *draw);
+void button_ok_event(original_button *button_ok, SDL_Event *e,int *quit, int *draw);
+int menu();

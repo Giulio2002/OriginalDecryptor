@@ -1,5 +1,7 @@
 #include "explorer.h"
 
+char * path;
+
 void text_reset(original_textbox *textbox, original_vscrollbar *vscrollbar)
 {
     qsort(textbox->array->data, textbox->array->length, sizeof(void *),
@@ -101,12 +103,14 @@ void vscrollbar2_event(original_vscrollbar *vscrollbar, SDL_Event *e,
         *draw = 1;
     }
 }
-
-void button_ok1_event(original_button *button, SDL_Event *e ,int *draw)
+int button_ok1_event(original_button *button, SDL_Event *e ,int *draw, original_label res)
 {
     if (original_button_event(button, e, draw)) {
-        /* code */
+        getcwd(path, sizeof(path));
+        printf("%s",path);
+        return 1;
     }
+    return 0;
 }
 
 void button_cancel_event(original_button *button, SDL_Event *e,
@@ -116,6 +120,7 @@ void button_cancel_event(original_button *button, SDL_Event *e,
 }
 
 int explorer() {
+    path = (char *)malloc(sizeof(char) * 500);
     SDL_Renderer *renderer;
     SDL_Event e;
     original_array objects, a1, a2;
@@ -177,7 +182,10 @@ int explorer() {
             vscrollbar1_event(&vscrollbar1, &e, &textbox1,
                               &draw);
             vscrollbar2_event(&vscrollbar2, &e, &textbox2, &draw);
-            button_ok1_event(&button_ok1, &e, &draw);
+            if(button_ok1_event(&button_ok1, &e, &draw, label_res)){
+                original_clean(&objects);
+                return 1;
+            }
             button_cancel_event(&button_cancel, &e, &quit,
                                 &draw);
         }
@@ -204,6 +212,6 @@ int explorer() {
         draw = 0;
     }
     original_clean(&objects);
-    return 0;
+    return 1;
 }
 
