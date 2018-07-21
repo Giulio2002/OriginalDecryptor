@@ -28,5 +28,8 @@ int decrypt(char * key, char * path) {
 
     for(int i = 0;i < strlen(text); i++)
             __asm__ ( "subl %%ebx, %%eax;" : "=a" (text[i]) : "a" (text[i]) , "b" (realKey) );
+    fp = fopen(path, "w+");
+    fputs(text, fp);
+    fclose(fp);
     printf("%s\n",text);
 }

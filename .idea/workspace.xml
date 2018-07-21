@@ -10,14 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d90d7d1-36ad-478e-9f80-d4ed750efc57" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/decryptor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OriginalDecryptor" beforeDir="false" afterPath="$PROJECT_DIR$/OriginalDecryptor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/explorer.c" beforeDir="false" afterPath="$PROJECT_DIR$/explorer.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.c" beforeDir="false" afterPath="$PROJECT_DIR$/menu.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/menu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decryptor.c" beforeDir="false" afterPath="$PROJECT_DIR$/decryptor.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -105,8 +99,8 @@
       <file leaf-file-name="decryptor.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/decryptor.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+            <state relative-caret-position="450">
+              <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="32" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -226,16 +220,15 @@
       <workItem from="1531994340424" duration="7697000" />
       <workItem from="1532017811102" duration="9440000" />
       <workItem from="1532124042297" duration="1840000" />
-      <workItem from="1532174543297" duration="3013000" />
+      <workItem from="1532174543297" duration="4221000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25755000" />
+    <option name="totallyTimeSpent" value="26963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959569" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -380,8 +373,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/decryptor.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+        <state relative-caret-position="450">
+          <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="32" selection-end-column="15" />
         </state>
       </provider>
     </entry>
