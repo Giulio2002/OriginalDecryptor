@@ -113,6 +113,7 @@ void textbox2_event(original_textbox *textbox, SDL_Event *e,
         if((const char *)original_array_data(textbox->array, index) == NULL) return;
         strcat(path, "/");
         strcat(path, (const char *)original_array_data(textbox->array, index));
+        printf("\n%s\n",path);
     }
 }
 
@@ -120,8 +121,7 @@ void textbox2_event(original_textbox *textbox, SDL_Event *e,
 int button_ok1_event(original_button *button, SDL_Event *e ,int *draw, original_label res)
 {
     if (original_button_event(button, e, draw)) {
-        getcwd(path, sizeof(path));
-        printf("%s",path);
+        printf("\n%s\n",path);
         return 1;
     }
     return 0;

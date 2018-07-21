@@ -1,7 +1,7 @@
 LDFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
 CFLAGS = -Wall -c -std=c89
 BIN = OriginalDecryptor
-SOURCE = main.c draw.c general.c posix.c widgets.c explorer.c menu.c
+SOURCE = main.c draw.c general.c posix.c widgets.c explorer.c menu.c decryptor.c
 all: $(BIN)
 
 $(BIN):

@@ -1,5 +1,7 @@
 #include "menu.h"
 
+char key[500];
+
 void button_ok_event(original_button *button_ok, SDL_Event *e,
                             int *quit, int *draw)
 {
@@ -54,6 +56,9 @@ int menu()
             original_entry_event(&entry, &e, &draw);
             original_window_event(&window, &e, &draw);
             button_ok_event(&button_ok, &e, &quit, &draw);
+            for(int i = 0;i <500;i++ ) {
+                key[i] = entry.text[i];
+            }
             if(button_file_event(&button_file, &e, &draw)) {
                 original_clean(&objects);
                 return 1; //explorer
@@ -74,5 +79,5 @@ int menu()
         draw = 0;
     }
     original_clean(&objects);
-    return 0;
+    return 2;
 }
