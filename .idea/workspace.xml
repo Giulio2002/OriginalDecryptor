@@ -10,8 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d90d7d1-36ad-478e-9f80-d4ed750efc57" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/OriginalDecryptor" beforeDir="false" afterPath="$PROJECT_DIR$/OriginalDecryptor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decryptor.c" beforeDir="false" afterPath="$PROJECT_DIR$/decryptor.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/OriginalDecryptor.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -100,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/decryptor.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
-              <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="32" selection-end-column="15" />
+              <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="32" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -220,12 +224,12 @@
       <workItem from="1531994340424" duration="7697000" />
       <workItem from="1532017811102" duration="9440000" />
       <workItem from="1532124042297" duration="1840000" />
-      <workItem from="1532174543297" duration="4221000" />
+      <workItem from="1532174543297" duration="4528000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26963000" />
+    <option name="totallyTimeSpent" value="27270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -374,7 +378,7 @@
     <entry file="file://$PROJECT_DIR$/decryptor.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="32" selection-end-column="15" />
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="32" selection-end-column="15" />
         </state>
       </provider>
     </entry>
